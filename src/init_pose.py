@@ -20,10 +20,10 @@ def time_wait():
 			pose.header.stamp = rospy.Time.now()
 
 			pose.pose.pose.position.x = 19.5
-			pose.pose.pose.position.y = 3.0
+			pose.pose.pose.position.y = 3.5
 			pose.pose.pose.position.z = 0.0
-			pose.pose.pose.orientation.z = 0.0
-			pose.pose.pose.orientation.w = 1.0
+			pose.pose.pose.orientation.z = -0.7
+			pose.pose.pose.orientation.w = 0.7
 
 			pub.publish(pose)
 
