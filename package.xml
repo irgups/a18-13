@@ -1,6 +1,6 @@
 <?xml version="1.0.0"?>
     <package>
-    <name>pi_sos</name>
+    <name>autonet18p_Pi_sos</name>
     <version>1.4.1</version>
     <description>ROS robot</description>
     <maintainer email="husaki.ra@gmail.com">t</maintainer>
