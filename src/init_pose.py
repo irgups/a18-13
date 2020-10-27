@@ -3,15 +3,15 @@ import rospy
 from geometry_msgs.msg import PoseWithCovarianceStamped
 from std_msgs.msg import String
 
-k = 0
+key = 0
 
 def callback(msg):
-	global k
+	global key
 	if msg.data == "START":
-		k = 1
+		key = 1
 
 def time_wait():
-	global k
+	global key
 
 	while not rospy.is_shutdown():
 		if key == 1:
