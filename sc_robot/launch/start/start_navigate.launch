@@ -6,4 +6,5 @@
   <node pkg="sc_robot" name="init_pose" type="init_pose.py" />
   <include file="$(find rf2o_laser_odometry)/launch/rf2o_laser_odometry.launch"/>  
   <include file="$(find sc_robot)/launch/navigate.launch" />
+  <include file="$(find sc_robot)/launch/bag_record.launch" />
 </launch>
