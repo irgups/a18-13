@@ -22,9 +22,9 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 catkin_package(
-  INCLUDE_DIRS include
+  #INCLUDE_DIRS include
   CATKIN_DEPENDS roscpp rospy tf2 tf2_ros nav_msgs geometry_msgs sensor_msgs std_msgs 
-  DEPENDS system_lib
+  #DEPENDS system_lib
 )
 
 ###########
@@ -32,7 +32,7 @@ catkin_package(
 ###########
 
 include_directories(
-  include
+  #include
   ${catkin_INCLUDE_DIRS}
 )
 
