@@ -4,7 +4,7 @@
   
   <node pkg="autonet18p_Pi_sos" name="goals" type="goals.py" />
   <node pkg="autonet18p_Pi_sos" name="init_pose" type="init_pose.py" />
-  <include file="$(find rf2o_kria)/launch/rf2o_laser_odometry.launch"/>  
+  <include file="$(find rf2o_kria)/launch/rf2o_kria.launch"/>  
   <include file="$(find autonet18p_Pi_sos)/launch/navigate.launch" />
   <include file="$(find autonet18p_Pi_sos)/launch/bag_record.launch" />
 </launch>
