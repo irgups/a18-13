@@ -1,6 +1,6 @@
 <?xml version="1.0.0"?>
     <package>
-    <name>sc_robot</name>
+    <name>pi_sos</name>
     <version>1.4.1</version>
     <description>ROS robot</description>
     <maintainer email="husaki.ra@gmail.com">t</maintainer>
