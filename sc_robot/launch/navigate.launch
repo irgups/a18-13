@@ -1,6 +1,6 @@
 <launch>
     <!-- Map server -->
-    <arg name="map_file" default="/home/one/map_mini_robofest2020.yaml"/>
+    <arg name="map_file" default="$(find sc_robot)/map/map_mini_robofest2020.yaml"/>
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" />
 
     <!-- AMCL used for localization -->
