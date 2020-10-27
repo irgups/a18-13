@@ -23,11 +23,11 @@ def time_wait():
 			goal.target_pose.header.frame_id = "map"
 			goal.target_pose.header.stamp = rospy.Time.now()
 
-			goal.target_pose.pose.position.x = 4.9
-			goal.target_pose.pose.position.y = 18.0
+			goal.target_pose.pose.position.x = 17.4
+			goal.target_pose.pose.position.y = 14.15
 			goal.target_pose.pose.position.z = 0.0
-			goal.target_pose.pose.orientation.z = 0.365
-			goal.target_pose.pose.orientation.w = 0.931
+			goal.target_pose.pose.orientation.z = -0.425
+			goal.target_pose.pose.orientation.w = 0.905
 
 			client.send_goal(goal)
 
