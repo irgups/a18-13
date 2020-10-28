@@ -1,0 +1,4 @@
+<launch>
+  <!--node pkg="ds_haar" type="traffic_light.py" name="light" /-->
+  <node pkg="ds_haar" type="detector.py" name="detector_signs" />
+</launch>

@@ -76,6 +76,7 @@ def callback(data):
     frame = CvBridge().imgmsg_to_cv2(data, "bgr8")  # захват кадра
     frame = cv2.flip(frame, 0)
     key = 1
+    print("yesyesyes")
 
 def detector():
     global frame
@@ -153,9 +154,9 @@ def detector():
 
 
 if __name__ == '__main__':
-    try:
-        sub_video = rospy.Subscriber("/cam_top", Image, callback)
-        detector()
-    except rospy.ROSInterruptException:
-	out.release()
-        pass
+	try:
+		sub_video = rospy.Subscriber("/cam_top", Image, callback)
+		detector()
+	except rospy.ROSInterruptException:
+		out.release()
+	pass
