@@ -9,7 +9,7 @@ import numpy as np
 import cv2
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('robofest2020_ds.avi',fourcc, 25.0, (640,480))
+out = cv2.VideoWriter('/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/robofest2020_ds.avi',fourcc, 25.0, (640,480))
 
 global key
 key = 0
@@ -26,13 +26,13 @@ red_color_high = (230, 255, 255)
 
 # путь к каскаду
 # путь к каскадам
-cas_f = '/home/one/catkin_ws/src/ds_haar/src/cascade/cascade_f_20x20.xml'
-cas_l = '/home/one/catkin_ws/src/ds_haar/src/cascade/cascade_left_20x20.xml'
-cas_r = '/home/one/catkin_ws/src/ds_haar/src/cascade//cascade_right_20x20.xml'
-cas_f_or_l = '/home/one/catkin_ws/src/ds_haar/src/cascade/cascade_f_or_l_20x20.xml'
-cas_f_or_r = '/home/one/catkin_ws/src/ds_haar/src/cascade/cascade_f_or_r_20x20.xml'
-cas_stop = '/home/one/catkin_ws/src/ds_haar/src/cascade/cascade_stop_20x20.xml'
-cas = '/home/one/catkin_ws/src/ds_haar/src/cascade/cascade_20x20.xml'
+cas_f = '/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/src/cascade/cascade_f_20x20.xml'
+cas_l = '/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/src/cascade/cascade_left_20x20.xml'
+cas_r = '/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/src/cascade//cascade_right_20x20.xml'
+cas_f_or_l = '/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/src/cascade/cascade_f_or_l_20x20.xml'
+cas_f_or_r = '/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/src/cascade/cascade_f_or_r_20x20.xml'
+cas_stop = '/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/src/cascade/cascade_stop_20x20.xml'
+cas = '/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/src/cascade/cascade_20x20.xml'
 
 cascade = cv2.CascadeClassifier(cas)
 cascade_f = cv2.CascadeClassifier(cas_f)
