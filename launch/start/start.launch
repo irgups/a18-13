@@ -2,9 +2,9 @@
   <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.04 0 0.11 0 0 0 /base_link /laser 100"/>
   <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.1 0 0 0 /base_footprint /base_link 100"/>
   
-  <node pkg="autonet18p_Pi_sos" name="goals" type="goals.py" />
   <node pkg="autonet18p_Pi_sos" name="init_pose" type="init_pose.py" />
   <node pkg="ds_haar" type="detector.py" name="detector_signs" />
+  <node pkg="teleop_twist_keyboard" name="teleop" type="teleop_twist_keyboard.py" />
   <include file="$(find rf2o_kria)/launch/rf2o_kria.launch"/>  
   <include file="$(find autonet18p_Pi_sos)/launch/navigate.launch" />
   <include file="$(find autonet18p_Pi_sos)/launch/bag_record.launch" />

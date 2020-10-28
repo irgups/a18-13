@@ -9,13 +9,13 @@ import numpy as np
 import cv2
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/robofest2020_ds.avi',fourcc, 25.0, (640,480))
+out = cv2.VideoWriter('/home/one/catkin_ws/src/autonet18p_Pi_sos/ds_haar/robofest2020_ds.avi',fourcc, 10.0, (256,192))
 
 global key
 key = 0
 
 detect = False  # переменная для выделения знаков
-area = 1500  # пороговая площадь для обнаружения знаков
+area = 1400  # пороговая площадь для обнаружения знаков
 
 # пороги маски цвета
 blue_color_low = (20, 80, 50)  # blue_color_low = (74,1,123)
@@ -43,7 +43,7 @@ cascade_f_or_r = cv2.CascadeClassifier(cas_f_or_r)
 cascade_stop = cv2.CascadeClassifier(cas_stop)
 
 rospy.init_node('detector_node', anonymous=True)
-# pub_traffic_signs = rospy.Publisher('traffic_signs', String)
+pub_traffic_signs = rospy.Publisher('traffic_signs', String)
 
 # порог обнаружения знака
 def th(x):
@@ -67,7 +67,7 @@ def putDet(t):
     cv2.putText(frame, t, (x - 5, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     cv2.rectangle(frame, (x, y), (x + w, y + h), (125, 0, 255),
                   2)  # выделяем обнаруженый знак
-    # pub_traffic_signs.publish(t)
+    pub_traffic_signs.publish(t)
 
 
 def callback(data):
@@ -75,8 +75,9 @@ def callback(data):
     global frame
     frame = CvBridge().imgmsg_to_cv2(data, "bgr8")  # захват кадра
     frame = cv2.flip(frame, 0)
+    frame = cv2.flip(frame, 1)
+    #print(frame.shape)
     key = 1
-    print("yesyesyes")
 
 def detector():
     global frame
@@ -91,49 +92,49 @@ def detector():
 
             key = 0
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # делаем его ч/б
-            sign_cas = cascade.detectMultiScale(gray, 1.3, 1)  # применяем каскад
+            sign_cas = cascade.detectMultiScale(gray, 2.0, 1)  # применяем каскад
 
             for (x, y, w, h) in sign_cas:
                 roi = gray[y:y + h, x:x + w]  # вырезаем детектированный объект
                 height, width = roi.shape  # получаем размеры детектированного объекта
                 ar = height * width
-                # print ar
+                #print ar
                 # если площадь детектированного объекта больше порогового, то рассматриваем дальше что это
                 if ar >= area and ar <= area * 4:
-                    # cv2.imshow('roi', roi)	#показываем вырезанный знак
+                    #cv2.imshow('roi', roi)	#показываем вырезанный знак
 
-                    sign_cas_f = cascade_f.detectMultiScale(roi, 1.3, 1)
+                    sign_cas_f = cascade_f.detectMultiScale(roi, 2.0, 1)
 
                     if sign_cas_f != ():
                         detect = True
                         putDet("forward")
                         break
                     else:
-                        sign_cas_l = cascade_l.detectMultiScale(roi, 1.3, 1)
+                        sign_cas_l = cascade_l.detectMultiScale(roi, 2.0, 1)
                         if sign_cas_l != ():
                             detect = True
                             putDet("left")
                             break
                         else:
-                            sign_cas_r = cascade_r.detectMultiScale(roi, 1.3, 1)
+                            sign_cas_r = cascade_r.detectMultiScale(roi, 2.0, 1)
                             if sign_cas_r != ():
                                 detect = True
                                 putDet("right")
                                 break
                             else:
-                                sign_cas_f_or_l = cascade_f_or_l.detectMultiScale(roi, 1.3, 1)
+                                sign_cas_f_or_l = cascade_f_or_l.detectMultiScale(roi, 2.0, 1)
                                 if sign_cas_f_or_l != ():
                                     detect = True
                                     putDet("f_or_l")
                                     break
                                 else:
-                                    sign_cas_f_or_r = cascade_f_or_r.detectMultiScale(roi, 1.3, 1)
+                                    sign_cas_f_or_r = cascade_f_or_r.detectMultiScale(roi, 2.0, 1)
                                     if sign_cas_f_or_r != ():
                                         detect = True
                                         putDet("f_or_r")
                                         break
                                     else:
-                                        sign_cas_stop = cascade_stop.detectMultiScale(roi, 1.3, 1)
+                                        sign_cas_stop = cascade_stop.detectMultiScale(roi, 2.0, 1)
                                         if sign_cas_stop != ():
                                             detect = True
                                             putDet("stop")
@@ -142,7 +143,7 @@ def detector():
                                             detect = False
                                             break
 
-            #cv2.imshow('original', frame)
+            cv2.imshow('original', frame)
             out.write(frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
