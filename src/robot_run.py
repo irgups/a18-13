@@ -31,7 +31,7 @@ if __name__ == '__main__':
 		rospy.init_node("node_run_launch_file_malina")
 		uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
 		roslaunch.configure_logging(uuid)
-		launch = roslaunch.parent.ROSLaunchParent(uuid, ["/home/ubuntu/catkin_ws/src/autonet18p_Pi_sos/launch/start/start.launch"])
+		launch = roslaunch.parent.ROSLaunchParent(uuid, ["/home/nvidia/catkin_ws/src/autonet18p_Pi_sos/launch/start/start_fin.launch"])
 		rospy.Subscriber("cmd", String, callbackStart)
 		node_run()
 	except rospy.ROSInterruptException:

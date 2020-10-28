@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="autonet18p_Pi_sos" name="run" type="robot_run.py" />
+</launch>
