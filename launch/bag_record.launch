@@ -1,4 +1,0 @@
-<launch>
-	<arg name="bag_name" value="$(find autonet18p_Pi_sos)/bagfiles/robofest2020_4.bag" />
-	<node name="bag_record" pkg="rosbag" type="record" args="-O $(arg bag_name) -a"/>
-</launch>
